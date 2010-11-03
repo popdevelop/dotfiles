@@ -1,1 +1,1 @@
-Copy .emacs.local to your home directory and change the path to where you checked out your dotfiles.
+Copy .emacs.local to your home directory and rename it to .emacs. Open it and change the path to where you checked out your dotfiles.
