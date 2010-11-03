@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# key: iba
+# name: Class Implementation
+## condition: "source.objc, source.objc++"
+# --
+
+IBAction ${1:NSObject} *${2:name};
+@property (nonatomic, retain) IBAction $1 *$2;

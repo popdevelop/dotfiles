@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# key: log
+# name: NSLog(...)
+# --
+NSLog(@"${1:%s}\\n"${1:$(if (string-match "%" text) ", " "\);")
+}$2${1:$(if (string-match "%" text) "\);" "")}

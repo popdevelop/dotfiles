@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Class Implementation
+# --
+IBAction ${1:NSObject} *${2:name};
+@property (nonatomic, retain) IBAction $1 *$2;
