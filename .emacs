@@ -1,8 +1,14 @@
 ; Place all addons here
 
-(setq user-emacs-directory "~/Dropbox/popdevelop/dotfiles/.emacs.d") 
-(add-to-list 'load-path "~/Dropbox/popdevelop/dotfiles/.emacs.d/addons/")
-(add-to-list 'load-path "~/Dropbox/popdevelop/dotfiles/.emacs.d/addons/auto-complete-1.3/")
+; Popdevelop made functions
+(defun add-path (path)
+ "Add new path with loadable files using popdevelop path"
+ (concat popdevelop-packages-path path))
+
+; Load packages files
+(setq user-emacs-directory (add-path ".emacs.d")) 
+(add-to-list 'load-path (add-path ".emacs.d/addons/"))
+(add-to-list 'load-path (add-path ".emacs.d/addons/auto-complete-1.3/"))
 
 (require 'coffee-mode)
 (defun coffee-custom ()
@@ -12,7 +18,7 @@
   '(lambda() (coffee-custom)))
 
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/Dropbox/popdevelop/dotfiles/.emacs.d/addons/auto-complete-1.3/dict")
+(add-to-list 'ac-dictionary-directories (add-path ".emacs.d/addons/auto-complete-1.3/dict"))
 (ac-config-default)
 (add-hook 'objc-mode-common-hook 'ac-cc-mode-setup)
 
@@ -106,10 +112,10 @@
 (define-key global-map [(meta f9)]  'cscope-display-buffer)
 (define-key global-map [(meta f10)] 'cscope-display-buffer-toggle)
 
-(add-to-list 'load-path "~/Dropbox/popdevelop/dotfiles/.emacs.d/addons/yasnippet-0.6.1c")
+(add-to-list 'load-path (add-path ".emacs.d/addons/yasnippet-0.6.1c"))
 (require 'yasnippet)
 (yas/initialize)
-(yas/load-directory "~/Dropbox/popdevelop/dotfiles/.emacs.d/addons/yasnippet-0.6.1c/snippets")
+(yas/load-directory (add-path ".emacs.d/addons/yasnippet-0.6.1c/snippets"))
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
 ; Customize buffer name when identical to another

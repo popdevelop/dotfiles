@@ -1,1 +1,2 @@
-(load "~/Dropbox/popdevelop/dotfiles/.emacs")
+(setq popdevelop-packages-path "/Git/dotfiles/")
+(load "/Git/dotfiles/.emacs")

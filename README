@@ -1,1 +1,3 @@
-Copy .emacs.local to your home directory and rename it to .emacs. Open it and change the path to where you checked out your dotfiles.
+Copy .emacs.local to your home directory
+   * Change the var popdevelop-packages-path to the dotfiles git repo.
+   * Change the path to the .emacs where you checked out your dotfiles for load.
