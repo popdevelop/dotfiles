@@ -213,30 +213,22 @@
 ;; Customize buffer name when identical to another
 (require 'uniquify)
 
-;;; ---- ido bufferhandling
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-;; displayed vertically, instead of horizontally
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-;; Did you ever want to use bookmarks from within ido? I just did a little mashup of bookmark and ido code, just M-C-b from your ido file selection. – AnselmHelbig
-    (setq enable-recursive-minibuffers t)
-    (define-key ido-file-dir-completion-map [(meta control ?b)] 'ido-goto-bookmark)
-    (defun ido-goto-bookmark (bookmark)
-      (interactive
-       (list (bookmark-completing-read "Jump to bookmark"
-    				   bookmark-current-bookmark)))
-      (unless bookmark
-        (error "No bookmark specified"))
-      (let ((filename (bookmark-get-filename bookmark)))
-        (ido-set-current-directory
-         (if (file-directory-p filename)
-             filename
-           (file-name-directory filename)))
-        (setq ido-exit        'refresh
-              ido-text-init   ido-text
-              ido-rotate-temp t)
-        (exit-minibuffer)))
+;;; ---- iswitchb
+(iswitchb-mode 1)
+
+;; ignore * files
+(setq iswitchb-buffer-ignore '("^\\*"))
+(setq iswitchb-buffer-ignore '("\*"))
+
+(defun iswitchb-local-keys ()
+  (mapc (lambda (K)
+	  (let* ((key (car K)) (fun (cdr K)))
+	    (define-key iswitchb-mode-map (edmacro-parse-keys key) fun)))
+	'(("C-p" . iswitchb-next-match)
+	  ("C-n"  . iswitchb-prev-match)
+	  ("<up>"    . ignore             )
+	  ("<down>"  . ignore             ))))
+(add-hook 'iswitchb-define-mode-map-hook 'iswitchb-local-keys)
 
 ;;; ---- temporary files
 ;; Put autosave files (ie #foo#) in one place, *not* scattered all over the
