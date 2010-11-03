@@ -26,9 +26,6 @@
 ;; Default settings
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-;(set-face-background 'ac-candidate-face "lightgray")
-;(set-face-underline 'ac-candidate-face "darkgray")
-;(set-face-background 'ac-selection-face "steelblue")
 
 (add-hook 'c-mode-common-hook
   (lambda() 
@@ -97,8 +94,6 @@
 
 (add-hook 'post-command-hook 'djcb-set-cursor-according-to-mode)
 
-;(require 'xcscope)
-
 (define-key global-map [(control f3)]  'cscope-set-initial-directory)
 (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
 (define-key global-map [(control f5)]  'cscope-find-this-symbol)
@@ -126,22 +121,6 @@
 (setq ido-enable-flex-matching t)
 ;; displayed vertically, instead of horizontally
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-; sort ido filelist by mtime instead of alphabetically
-;  (add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
-;  (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
-;  (defun ido-sort-mtime ()
-;    (setq ido-temp-list
-;          (sort ido-temp-list 
-;                (lambda (a b)
-;                  (let ((ta (nth 5 (file-attributes (concat ido-current-directory a))))
-;                        (tb (nth 5 (file-attributes (concat ido-current-directory b)))))
-;                    (if (= (nth 0 ta) (nth 0 tb))
-;                        (> (nth 1 ta) (nth 1 tb))
-;                      (> (nth 0 ta) (nth 0 tb)))))))
-;    (ido-to-end  ;; move . files to end (again)
-;     (delq nil (mapcar
-;                (lambda (x) (if (string-equal (substring x 0 1) ".") x))
-;                ido-temp-list))))
 ;;Did you ever want to use bookmarks from within ido? I just did a little mashup of bookmark and ido code, just M-C-b from your ido file selection. – AnselmHelbig
     (setq enable-recursive-minibuffers t)
     (define-key ido-file-dir-completion-map [(meta control ?b)] 'ido-goto-bookmark)
@@ -160,68 +139,6 @@
               ido-text-init   ido-text
               ido-rotate-temp t)
         (exit-minibuffer)))
-
-
-
-; Duplicate a line, no matter where the cursor is at. Currently unbound
-;(defun duplicate-current-line () (interactive)
-;  (let ((str (concat
-;              (buffer-substring (point)
-;                                (save-excursion (end-of-line) (point)))
-;              "\n"
-;              (buffer-substring (save-excursion (beginning-of-line) (point))
-;                                (point)))))
-;    (insert str)
-;    ))
-
-
-;(require 'tabbar)
-;(tabbar-mode)
-;
-;; Tabbar just one group
-;(setq tabbar-buffer-groups-function
-;(lambda ()
-;(list "All")))
-;
-;; FIXME: can't get this to work
-;;(autoload 'guess-style-set-variable "guess-style" nil t)
-;;(autoload 'guess-style-guess-variable "guess-style")
-;;(autoload 'guess-style-guess-all "guess-style" nil t)
-;;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
-;;;(global-guess-style-info-mode 1)
-;
-;
-;
-;;; add a buffer modification state indicator in the tab label,
-;;; and place a space around the label to make it looks less crowd
-;(defadvice tabbar-buffer-tab-label (after fixup_tab_label_space_and_flag activate)
-;  (setq ad-return-value
-;       	(if (and (buffer-modified-p (tabbar-tab-value tab))
-;       			 (buffer-file-name (tabbar-tab-value tab)))
-;       		(concat "*" (concat ad-return-value " "))
-;       		(concat " " (concat ad-return-value " ")))))
-;
-;;; called each time the modification state of the buffer changed
-;(defun ztl-modification-state-change ()
-;  (tabbar-set-template tabbar-current-tabset nil)
-;  (tabbar-display-update))
-;;; first-change-hook is called BEFORE the change is made
-;(defun ztl-on-buffer-modification ()
-;  (set-buffer-modified-p t)
-;  (ztl-modification-state-change))
-;(add-hook 'after-save-hook 'ztl-modification-state-change)
-;;; this doesn't work for revert, I don't know
-;;;(add-hook 'after-revert-hook 'ztl-modification-state-change)
-;(add-hook 'first-change-hook 'ztl-on-buffer-modification)
-;
-;
-;(global-set-key "\M-n" 'tabbar-forward)
-;(global-set-key "\M-p" 'tabbar-forward)
-
-
-; FIXME: could not get to work. Do I need it?
-;(require 'auto-dictionary)
-;(add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1)))
 
 ;; When using 'grep'
 ;; '-i'   Ignore case distinctions
@@ -268,22 +185,6 @@
 ; Python indentation
 (setq-default py-indent-offset 4)
 
-;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
-
-; Access windows easy with M-0 to M-9
-;;(autoload 'window-number-meta-mode "window-number"
-;;  "A global minor mode that enables use of the M- prefix to select
-;;windows, use `window-number-mode' to display the window numbers in
-;;the mode-line."
-;;  t)
-;;(window-number-meta-mode 1)
-
-; Doxygen documentation
-; IMPORTANT: Requires Semantic
-; TODO: learn how to use this
-;(require 'doc-mode)
-;(add-hook 'c-mode-hook 'doc-mode)
-
 ; Avoid jumpy scolling
 (setq scroll-step 1)
 
@@ -313,8 +214,6 @@
 (defun my-c-mode-hooks ()
   (let ((bname (buffer-file-name)))
     (cond
-;     ((string-match "libimaging" bname) (setq c-basic-offset 4))
-     ((string-match "apps/imaged/" bname) (setq c-basic-offset 4))
      ((string-match "util/jm" bname) (setq c-basic-offset 2))
      ((string-match "mve6" bname) (setq c-basic-offset 4))
      ((string-match "os/linux-2.6" bname) (c-set-style "linux"))
@@ -331,7 +230,6 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
 
 ;; Show column-number in the mode line
 (column-number-mode 1)
@@ -420,11 +318,3 @@
 (require 'lineker)
 (add-hook 'c-mode-hook 'lineker-mode)
 ;; TODO: In Emacs 23 this is integrated in whitespace-mode
-
-
-; Default font
-;;(set-default-font "-*-lucidatypewriter-medium-*-*-*-12-140-*-*-*-*-*-*")
-;(set-default-font "-*-bitstream vera sans mono-medium-r-*-*-*-120-*-*-*-*-iso8859-*")
-;;(set-default-font "-misc-*-*-*-*-*-12-*-*-*-*-*-*-*")
-;(set-default-font "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-c-*-iso8859-1")
-;(set-default-font "-xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-paratype-pt154")
