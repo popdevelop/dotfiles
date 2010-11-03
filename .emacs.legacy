@@ -1,3 +1,35 @@
+(add-to-list
+ 'magic-mode-alist
+ '("\\(.\\|\n\\)*@interface" . objc-mode))
+
+(add-hook 'c-mode-common-hook
+  (lambda() 
+    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+(add-hook 'objc-mode-hook
+          (lambda ()
+            (set (make-local-variable 'cc-other-file-alist)  '(("\\.m\\'" (".h")) ("\\.h\\'" (".m" ".c" ".cpp"))))))
+
+;; Check if system is Darwin/Mac OS X
+(defun system-type-is-darwin ()
+(interactive)
+"Return true if system is darwin-based (Mac OS X)"
+(string-equal system-type "darwin")
+)
+
+;; Check if system is GNU/Linux
+(defun system-type-is-gnu ()
+(interactive)
+"Return true if system is GNU/Linux-based"
+(string-equal system-type "gnu/linux")
+)
+
+;; Check if the system is my Kubuntu GNU/Linux at work
+(defun system-is-my-workpc ()
+(interactive)
+"Return true if the system we are running on is my PC at work"
+(string-equal system-name "dev002.workplace.com")
+)
+
 ;(set-face-background 'ac-candidate-face "lightgray")
 ;(set-face-underline 'ac-candidate-face "darkgray")
 ;(set-face-background 'ac-selection-face "steelblue")
