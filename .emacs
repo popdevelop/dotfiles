@@ -306,9 +306,10 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 121 :width normal :foundry "bitstream" :family "Bitstream Vera Sans Mono"))))
  '(cursor ((t nil)))
  '(diff-added ((t (:inherit diff-changed :foreground "#9edd4b"))))
  '(lineker-warning-face ((((type x)) (:background "#202020" :foreground "#dddddd"))))
  '(trailing-whitespace ((((class color) (background dark)) (:strike-through "#222222" :underline "#383838"))))
  '(vertical-border ((nil (:foreground "#444444")))))
+
+(set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1")
