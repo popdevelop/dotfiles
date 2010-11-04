@@ -50,6 +50,12 @@
 (global-set-key "\C-c\C-j" 'goto-line)
 
 ;; todo
+(require 'todoo)
+(defun todoo-or-close-todo ()
+    (interactive)
+    (if (eq major-mode 'todoo-mode)
+        (call-interactively 'todoo-save-and-exit)
+      (call-interactively 'todoo)))
 (define-key global-map [f10] 'todoo-or-close-todo)
 
 ;;Uncomment region
