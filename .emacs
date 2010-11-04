@@ -7,6 +7,16 @@
  "Add new path with loadable files using popdevelop path"
  (concat popdevelop-packages-path path))
 
+;;; ---- Check if system is Darwin/Mac OS X
+(defun system-type-is-darwin ()
+  "Return true if system is darwin-based (Mac OS X)"
+  (string-equal system-type "darwin"))
+
+;;;; ---- Check if system is GNU/Linux
+(defun system-type-is-gnu ()
+  "Return true if system is GNU/Linux-based"
+  (string-equal system-type "gnu/linux"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Load packages files
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -315,4 +325,4 @@
  '(trailing-whitespace ((((class color) (background dark)) (:strike-through "#222222" :underline "#383838"))))
  '(vertical-border ((nil (:foreground "#444444")))))
 
-(set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1")
+(if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
