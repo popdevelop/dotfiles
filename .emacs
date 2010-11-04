@@ -66,7 +66,7 @@
 ;; Make the y or n suffice for a yes or no question
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;;; ---- dabrev
+;;; ---- dabbrev
 ;; Advanced abbreviation completion M-/ or M-C-/
 ;; This lets you autocomplete words that exist anywhere in the file by just
 ;; typing a part of it and pressing M-/
@@ -209,6 +209,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; File handling
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'gitsum)
+(require 'git)
 
 ;; Customize buffer name when identical to another
 (require 'uniquify)
