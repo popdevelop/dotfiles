@@ -114,6 +114,9 @@
 (require 'lineker)
 (add-hook 'c-mode-hook 'lineker-mode)
 
+;; Do NOT warn for long lines when saving (very annoying feature)
+(setq lineker-check-on-save nil)
+
 ;;; ---- grep command
 ;; When using 'grep'
 ;; '-i'   Ignore case distinctions
