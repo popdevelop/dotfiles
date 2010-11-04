@@ -1,2 +1,2 @@
 (setq popdevelop-packages-path "/Git/dotfiles/")
-(load "/Git/dotfiles/.emacs")
+(load (concat popdevelop-packages-path ".emacs"))
