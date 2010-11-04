@@ -21,7 +21,7 @@
 ;;;; Load packages files
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq user-emacs-directory (add-path ".emacs.d")) 
+(setq user-emacs-directory (add-path ".emacs.d"))
 (add-to-list 'load-path (add-path ".emacs.d/addons/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -76,6 +76,32 @@
 ;; Make the y or n suffice for a yes or no question
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;;; ---- Move lines with M-p (up) and M-n (down)
+(global-set-key "\M-p" 'move-line-up)
+(global-set-key "\M-n" 'move-line-down)
+
+(defun move-line (&optional n)
+   "Move current line N (1) lines up/down leaving point in place."
+   (interactive "p")
+   (when (null n)
+     (setq n 1))
+   (let ((col (current-column)))
+     (beginning-of-line)
+     (next-line 1)
+     (transpose-lines n)
+     (previous-line 1)
+     (forward-char col)))
+
+(defun move-line-up (n)
+   "Moves current line N (1) lines up leaving point in place."
+   (interactive "p")
+   (move-line (if (null n) -1 (- n))))
+
+(defun move-line-down (n)
+   "Moves current line N (1) lines down leaving point in place."
+   (interactive "p")
+   (move-line (if (null n) 1 n)))
+
 ;;; ---- dabbrev
 ;; Advanced abbreviation completion M-/ or M-C-/
 ;; This lets you autocomplete words that exist anywhere in the file by just
@@ -119,7 +145,7 @@
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
-;;; ---- Pager 
+;;; ---- Pager
 ;; More sane scrolling. Return to same line when paging up, down and back up again.
 (require 'pager)
 (global-set-key "\C-v"	   'pager-page-down)
@@ -157,7 +183,7 @@
     (overwrite-mode
       (set-cursor-color djcb-overwrite-color)
       (setq cursor-type djcb-overwrite-cursor-type))
-    (t 
+    (t
       (set-cursor-color djcb-normal-color)
       (setq cursor-type djcb-normal-cursor-type))))
 
