@@ -242,6 +242,9 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
+;;; ---- Font
+(if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; File handling
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -350,5 +353,3 @@
  '(lineker-warning-face ((((type x)) (:background "#202020" :foreground "#dddddd"))))
  '(trailing-whitespace ((((class color) (background dark)) (:strike-through "#222222" :underline "#383838"))))
  '(vertical-border ((nil (:foreground "#444444")))))
-
-(if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
