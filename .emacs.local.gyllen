@@ -1,0 +1,68 @@
+(setq popdevelop-packages-path "/home/johangy/git/dotfiles/")
+(load (concat popdevelop-packages-path "/home/johangy/git/dotfiles/.emacs"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Misc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(set-default-font "6x12")
+(global-font-lock-mode 1)
+(transient-mark-mode 1)
+
+;; Xrefactory configuration part ;;
+;; some Xrefactory defaults can be set here
+(defvar xref-current-project nil) ;; can be also "my_project_name"
+(defvar xref-key-binding 'global) ;; can be also 'local or 'none
+(setq load-path (cons "/home/johangy/Downloads/xref/emacs" load-path))
+(setq exec-path (cons "/home/johangy/Downloads/xref" exec-path))
+(load "xrefactory")
+;; end of Xrefactory configuration part ;;
+(message "xrefactory loaded")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Buffer switch
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(iswitchb-mode 1)
+(setq iswitchb-buffer-ignore '("^\\*"))
+(setq iswitchb-buffer-ignore '("\*"))
+(defun iswitchb-local-keys ()
+  (mapc (lambda (K)
+	  (let* ((key (car K)) (fun (cdr K)))
+	    (define-key iswitchb-mode-map (edmacro-parse-keys key) fun)))
+	'(("C-f" . iswitchb-next-match)
+	  ("C-b"  . iswitchb-prev-match)
+	  ("<up>"    . ignore             )
+	  ("<down>"  . ignore             ))))
+(add-hook 'iswitchb-define-mode-map-hook 'iswitchb-local-keys)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; My key bindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Key bindings xref
+(global-set-key (kbd "s-x s-d") 'xref-project-delete)
+(global-set-key (kbd "s-x s-j") 'xref-project-new)
+(global-set-key (kbd "s-x s-a") 'xref-project-set-active)
+(global-set-key (kbd "s-x s-e") 'xref-project-edit-options)
+
+;; Goto line
+(global-set-key "\C-c\C-j" 'goto-line)
+
+;; todo
+(define-key global-map [f10] 'todoo-or-close-todo)
+
+;;Uncomment region
+(global-set-key "\C-c\C-y" 'uncomment-region)
+
+;; Switch windows with s-a
+(global-set-key (kbd "s-a") 'other-window)
+
+;; My own color theme
+(load-file "/usr/share/emacs22/site-lisp/emacs-goodies-el/color-theme.el")
+(require 'color-theme)
+(setq color-theme-is-global t)
+(color-theme-dark-blue2)
+
+;; I do not like the bar cursor
+(setq djcb-normal-cursor-type    'box)
