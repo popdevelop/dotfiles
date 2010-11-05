@@ -289,6 +289,9 @@
 
 (setq version-control nil)
 
+;;; ---- Open old opened files when emacs is closed and reopened
+(desktop-save-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Language add-ons
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
