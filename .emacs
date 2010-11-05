@@ -212,6 +212,8 @@
      (fringe ((t (:background "#2e2e2e"))))
      (mode-line ((t (:foreground "#8f8f8f" :background "#303030"))))
      (region ((t (:background "#424242"))))
+     (flymake-errline ((((class color)) (:background "LightPink" :foreground "black"))))
+     (flymake-warnline ((((class color)) (:background "LightBlue2" :foreground "black"))))
      (font-lock-builtin-face ((t (:foreground "#ffb885"))))
      (font-lock-comment-face ((t (:foreground "#525252"))))
      (font-lock-function-name-face ((t (:foreground "#f359a0"))))
