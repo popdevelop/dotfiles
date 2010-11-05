@@ -36,8 +36,9 @@
 (add-hook 'objc-mode-common-hook 'ac-cc-mode-setup)
 
 (setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
+;; uncomment if you like to be able to select autocomplete with arrows (n00bish)
+;;(define-key ac-menu-map "\C-n" 'ac-next)
+;;(define-key ac-menu-map "\C-p" 'ac-previous)
 
 (desktop-save-mode 1)
 
