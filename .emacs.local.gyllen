@@ -45,6 +45,9 @@
 (global-set-key (kbd "s-x s-j") 'xref-project-new)
 (global-set-key (kbd "s-x s-a") 'xref-project-set-active)
 (global-set-key (kbd "s-x s-e") 'xref-project-edit-options)
+(global-set-key (kbd "C-c C-r") 'xref-refactor)
+(global-set-key (kbd "C-c C-f") 'flymake-display-err-menu-for-current-line)
+
 
 ;; Goto line
 (global-set-key "\C-c\C-j" 'goto-line)
@@ -65,10 +68,13 @@
 (global-set-key (kbd "s-a") 'other-window)
 
 ;; My own color theme
-(load-file "/usr/share/emacs22/site-lisp/emacs-goodies-el/color-theme.el")
-(require 'color-theme)
-(setq color-theme-is-global t)
-(color-theme-dark-blue2)
+;;(load-file "/usr/share/emacs22/site-lisp/emacs-goodies-el/color-theme.el")
+;;(require 'color-theme)
+;;(setq color-theme-is-global t)
+;;(color-theme-dark-blue2)
 
 ;; I do not like the bar cursor
 (setq djcb-normal-cursor-type    'box)
+
+;; Use flymake
+(add-hook 'c-mode-hook 'flymake-mode)
