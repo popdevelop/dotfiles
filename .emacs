@@ -35,12 +35,10 @@
 (ac-config-default)
 (add-hook 'objc-mode-common-hook 'ac-cc-mode-setup)
 
-(setq ac-use-menu-map t)
-;; uncomment if you like to be able to select autocomplete with arrows (n00bish)
-;;(define-key ac-menu-map "\C-n" 'ac-next)
-;;(define-key ac-menu-map "\C-p" 'ac-previous)
-
-(desktop-save-mode 1)
+(define-key ac-completing-map "\M-n" 'ac-next)
+(define-key ac-completing-map "\M-p" 'ac-previous)
+(define-key ac-completing-map [down] [down])
+(define-key ac-completing-map [up] [up])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Text input
