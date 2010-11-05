@@ -67,11 +67,8 @@
 ;; Switch windows with s-a
 (global-set-key (kbd "s-a") 'other-window)
 
-;; My own color theme
-;;(load-file "/usr/share/emacs22/site-lisp/emacs-goodies-el/color-theme.el")
-;;(require 'color-theme)
-;;(setq color-theme-is-global t)
-;;(color-theme-dark-blue2)
+;; Color theme tweaks
+(set-face-background 'trailing-whitespace "Green")
 
 ;; I do not like the bar cursor
 (setq djcb-normal-cursor-type    'box)
