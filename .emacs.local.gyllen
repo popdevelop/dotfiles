@@ -69,6 +69,8 @@
 
 ;; Color theme tweaks
 (set-face-background 'trailing-whitespace "Green")
+(set-face-background 'lineker-warning-face "Pink")
+(set-face-foreground 'lineker-warning-face "Black")
 
 ;; I do not like the bar cursor
 (setq djcb-normal-cursor-type    'box)
