@@ -17,12 +17,20 @@
   "Return true if system is GNU/Linux-based"
   (string-equal system-type "gnu/linux"))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Load packages files
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq user-emacs-directory (add-path ".emacs.d"))
 (add-to-list 'load-path (add-path ".emacs.d/addons/"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Fonts
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(set-default-font "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-c-*-iso8859-1")
+(if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Auto complete config
@@ -245,9 +253,6 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-;;; ---- Font
-(if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; File handling
