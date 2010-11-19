@@ -365,6 +365,7 @@
 ; Python indentation
 (setq-default py-indent-offset 4)
 
+<<<<<<< HEAD
 ; Static analysis
 (when (load "flymake" t)
          (defun flymake-pyflakes-init ()
@@ -425,10 +426,12 @@
             (set (make-local-variable 'ac-sources)
                  (append ac-sources '(ac-source-popdevelop)))))
 
+;;; --- Ruby
+(require 'ruby-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; End Auto Completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
