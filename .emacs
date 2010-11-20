@@ -355,6 +355,21 @@
 
    (add-hook 'find-file-hook 'flymake-find-file-hook)
 
+; Code standard
+;;(autoload 'python-pep8 "python-pep8")
+;;(autoload 'pep8 "python-pep8")
+
+; Pymacs can run Python code from Emacs
+; Download: http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz
+; Or check packages directory in our dotfiles. .el-file is for version 0.24
+; sudo python setup.py install
+(require 'pymacs)
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
