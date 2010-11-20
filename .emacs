@@ -29,7 +29,7 @@
 ;;;; Fonts
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(set-default-font "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-c-*-iso8859-1")
+(if (system-type-is-gnu) (set-default-font "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-c-*-iso8859-1"))
 (if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
