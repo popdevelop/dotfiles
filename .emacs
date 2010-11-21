@@ -370,6 +370,62 @@
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+(add-hook 'python-mode-hook
+          '(lambda () (ropemacs-mode 1)) t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Auto-completion
+;;;  Integrates:
+;;;   1) Rope
+;;;   2) Yasnippet
+;;;   all with AutoComplete.el
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(defun prefix-list-elements (list prefix)
+;  (let (value)
+;    (nreverse
+;     (dolist (element list value)
+;       (setq value (cons (format "%s%s" prefix element) value))))))
+;(defvar ac-source-rope
+;  '((candidates
+;     . (lambda ()
+;         (prefix-list-elements (rope-completions) ac-target))))
+;  "Source for Rope")
+
+(defun ac-ropemacs-candidate ()
+  (print "ponny")
+  (print rope-completions)
+  (list rope-completions)
+;  (list (current-time-string) "seb" "kolloil"))
+  )
+
+(ac-define-source popdevelop
+;  '((candidates . (lambda () 
+;         (ac-ropemacs-candidate (list (current-time-string) "seb" "kolloil"))))
+;  '((candidates . (rope-completions))
+;  '((candidates . (ac-ropemacs-candidate))
+  '((candidates . (ac-ropemacs-candidate))
+;  '((candidates . (prefix-list-elements (list "klas" "mas") ac-prefix))
+;  '((candidates . (lambda ()
+;         (prefix-list-elements (rope-completions) ac-prefix)))
+      ;(prefix-list-elements (list "klasen" "masen") ac-prefix)))
+    (prefix . ac-prefix-c-dot)
+    (requires . 0)
+    (symbol . "p")
+    (action . ac-start)
+    (limit . nil)))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (auto-complete-mode 1)
+            (set (make-local-variable 'ac-sources)
+                 (append ac-sources '(ac-source-popdevelop) '(ac-source-yasnippet)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; End Auto Completion
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
