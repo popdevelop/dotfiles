@@ -155,8 +155,11 @@
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
-;;; -- FLymake
+;;; -- Flymake
 (global-set-key "\C-c\ l" 'flymake-display-err-menu-for-current-line)
+
+;;; -- Rope documemtation
+(global-set-key "\C-c\ d" 'rope-show-doc)
 
 ;;; ---- Pager
 ;; More sane scrolling. Return to same line when paging up, down and back up again.
