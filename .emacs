@@ -155,6 +155,9 @@
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
+;;; -- FLymake
+(global-set-key "\C-c\ l" 'flymake-display-err-menu-for-current-line)
+
 ;;; ---- Pager
 ;; More sane scrolling. Return to same line when paging up, down and back up again.
 (require 'pager)
@@ -387,7 +390,7 @@
 (ac-define-source popdevelop
   '((candidates . (ac-ropemacs-candidate))
     (prefix . ac-prefix-c-dot)
-    (requires . 0)
+    (requires . 1)
     (symbol . "f")
     (action . ac-start)
     (limit . nil)))
