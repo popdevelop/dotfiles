@@ -341,7 +341,13 @@
 ;; This removes the default extra indent on Java methods.
 (lambda nil (c-set-offset 'inline-open 0))
 
-;;; --- Python
+;;; ---- CSS
+
+;; CSS autocomplete inifinite loop hacks
+(add-to-list 'ac-css-value-classes
+	     '(border-width "thin" "medium" "thick" "inherit"))
+
+;;; ---- Python
 
 ; Python indentation
 (setq-default py-indent-offset 4)
