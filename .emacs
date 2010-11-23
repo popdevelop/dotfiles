@@ -378,6 +378,7 @@
 (autoload 'python-pep8 "python-pep8")
 (autoload 'pep8 "python-pep8")
 (require 'python-pep8)
+(require 'tramp)
 
 ; Pymacs can run Python code from Emacs
 ; Download: http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz
