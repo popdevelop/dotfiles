@@ -1,24 +1,21 @@
-(setq popdevelop-packages-path "/home/johangy/git/dotfiles/")
-(load (concat popdevelop-packages-path "/home/johangy/git/dotfiles/.emacs"))
+;;; ---- Check if system is Darwin/Mac OS X
+(defun system-type-is-darwin ()
+  "Return true if system is darwin-based (Mac OS X)"
+  (string-equal system-type "darwin"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Misc
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; ---- Check if system is GNU/Linux
+(defun system-type-is-gnu ()
+  "Return true if system is GNU/Linux-based"
+  (string-equal system-type "gnu/linux"))
 
-(set-default-font "6x12")
-(global-font-lock-mode 1)
-(transient-mark-mode 1)
+;; Home
+(if (system-type-is-darwin) (setq popdevelop-packages-path "/Users/johangyllenspetz/Git/dotfiles/"))
+(if (system-type-is-darwin) (load (concat popdevelop-packages-path "/Users/johangyllenspetz/Git/dotfiles/.emacs")))
 
-;; Xrefactory configuration part ;;
-;; some Xrefactory defaults can be set here
-(defvar xref-current-project nil) ;; can be also "my_project_name"
-(defvar xref-key-binding 'global) ;; can be also 'local or 'none
-(setq load-path (cons "/home/johangy/Downloads/xref/emacs" load-path))
-(setq exec-path (cons "/home/johangy/Downloads/xref" exec-path))
-(load "xrefactory")
-;; end of Xrefactory configuration part ;;
-(message "xrefactory loaded")
-
+;; Work
+(if (system-type-is-gnu) (setq popdevelop-packages-path "/home/johangy/git/dotfiles/"))
+(if (system-type-is-gnu) (load (concat popdevelop-packages-path "/home/johangy/git/dotfiles/.emacs")))
+(if (system-type-is-gnu) (load (concat popdevelop-packages-path "/home/johangy/git/dotfiles/.emacs.local.gyllen.work")))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Buffer switch
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,25 +38,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Key bindings xref
-(global-set-key (kbd "s-x s-d") 'xref-project-delete)
-(global-set-key (kbd "s-x s-j") 'xref-project-new)
-(global-set-key (kbd "s-x s-a") 'xref-project-set-active)
-(global-set-key (kbd "s-x s-e") 'xref-project-edit-options)
-(global-set-key (kbd "C-c C-r") 'xref-refactor)
 (global-set-key (kbd "C-c C-f") 'flymake-display-err-menu-for-current-line)
-
 
 ;; Goto line
 (global-set-key "\C-c\C-j" 'goto-line)
-
-;; todo
-(require 'todoo)
-(defun todoo-or-close-todo ()
-    (interactive)
-    (if (eq major-mode 'todoo-mode)
-        (call-interactively 'todoo-save-and-exit)
-      (call-interactively 'todoo)))
-(define-key global-map [f10] 'todoo-or-close-todo)
 
 ;;Uncomment region
 (global-set-key "\C-c\C-y" 'uncomment-region)
