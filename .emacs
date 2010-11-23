@@ -120,6 +120,7 @@
 ;;; ---- lineker
 (require 'lineker)
 (add-hook 'c-mode-hook 'lineker-mode)
+(add-hook 'python-mode-hook 'lineker-mode)
 
 ;; Do NOT warn for long lines when saving (very annoying feature)
 (setq lineker-check-on-save nil)
