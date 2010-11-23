@@ -307,6 +307,13 @@
 ;;;; Language add-ons
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; ---- Markdown
+
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
 ;;; ---- Coffee script
 
 ;; coffe-mode
@@ -368,8 +375,9 @@
    (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 ; Code standard
-;;(autoload 'python-pep8 "python-pep8")
-;;(autoload 'pep8 "python-pep8")
+(autoload 'python-pep8 "python-pep8")
+(autoload 'pep8 "python-pep8")
+(require 'python-pep8)
 
 ; Pymacs can run Python code from Emacs
 ; Download: http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz
