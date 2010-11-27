@@ -1,0 +1,6 @@
+#contributor : Sebastian Wallin
+#name : function
+# --
+function($1) {
+  $0
+}

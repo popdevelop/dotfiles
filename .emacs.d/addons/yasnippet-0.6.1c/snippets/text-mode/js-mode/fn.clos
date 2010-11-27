@@ -1,0 +1,8 @@
+#contributor : Sebastian Wallin
+#name : function - closure
+# --
+(function() {
+  $0
+  return {
+  };
+}();
