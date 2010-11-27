@@ -1,9 +1,7 @@
 # -*- mode: snippet -*-
 #contributor : Sebastian Wallin
-#name : function - closure
+#name : jQuery document ready
 # --
-(function() {
+\$(document).ready(function() {
   $0
-  return {
-  };
-}();
+});

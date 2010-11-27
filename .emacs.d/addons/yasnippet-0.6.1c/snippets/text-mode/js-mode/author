@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+#name : Author
+# --
+/**
+ * Author: ${1: Sebastian Wallin} (popdevelop.se)
+ * Created: `(format-time-string "%Y-%m-%d")`
+ *
+ * Description:
+ * $0
+ */
