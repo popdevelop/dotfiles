@@ -365,7 +365,6 @@
 ; Python indentation
 (setq-default py-indent-offset 4)
 
-<<<<<<< HEAD
 ; Static analysis
 (when (load "flymake" t)
          (defun flymake-pyflakes-init ()
