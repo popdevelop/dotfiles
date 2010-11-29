@@ -17,6 +17,10 @@
   "Return true if system is GNU/Linux-based"
   (string-equal system-type "gnu/linux"))
 
+;;;; ---- Check if system is Windows
+(defun system-type-is-win ()
+  "Return true if system is Windows based"
+  (string-equal system-type "windows-nt"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Load packages files
@@ -31,6 +35,7 @@
 
 (if (system-type-is-gnu) (set-default-font "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-c-*-iso8859-1"))
 (if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
+(if (system-type-is-win) (set-default-font "-bitstream-bitstream vera sans mono-medium-r-*--*-90-*--*--*-"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Auto complete config
