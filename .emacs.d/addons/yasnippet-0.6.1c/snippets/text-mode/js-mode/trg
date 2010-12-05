@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+#contributor : Sebastian Wallin
+#name : jQuery trigger
+# --
+\$(document).trigger("$1");

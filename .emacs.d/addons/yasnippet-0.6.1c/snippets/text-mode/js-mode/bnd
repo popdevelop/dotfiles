@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 #contributor : Sebastian Wallin
-#name : jQuery document ready
+#name : jQuery bind
 # --
-\$(document).ready(function() {
+\$(document).bind("$1", function() {
   $0
 });
