@@ -380,6 +380,8 @@
 
    (add-hook 'find-file-hook 'flymake-find-file-hook)
 
+(load "flymake-php.el")
+
 ; Code standard
 (autoload 'python-pep8 "python-pep8")
 (autoload 'pep8 "python-pep8")
