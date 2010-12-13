@@ -160,6 +160,7 @@
 (global-set-key (kbd "C-c i") 'indent-region)
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
+(global-set-key (kbd "C-c b") 'revert-buffer)
 
 ;;; -- Flymake
 (global-set-key "\C-c\ l" 'flymake-display-err-menu-for-current-line)
