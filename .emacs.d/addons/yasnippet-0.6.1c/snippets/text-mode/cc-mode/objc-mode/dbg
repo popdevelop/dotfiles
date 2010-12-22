@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: NSLog(...)
+# --
+NSLog(@"${1:variable}: %@", $1);
