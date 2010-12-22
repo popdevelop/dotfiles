@@ -376,12 +376,38 @@
                            (file-name-directory buffer-file-name))))
              (list "pyflakes" (list local-file))))
 
+;         (setq flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
          (add-to-list 'flymake-allowed-file-name-masks
-                  '("\\.py\\'" flymake-pyflakes-init)))
+                      '("\\.py\\'" flymake-pyflakes-init)))
 
-   (add-hook 'find-file-hook 'flymake-find-file-hook)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
 
 (load "flymake-php.el")
+
+(defun flymake-jslint-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+		      temp-file
+		      (file-name-directory buffer-file-name))))
+    (list "rhino" (list (expand-file-name (add-path ".emacs.d/addons/jslint.js")) local-file))))
+
+(setq flymake-allowed-file-name-masks
+      (cons '(".+\\.js$"
+	      flymake-jslint-init
+	      flymake-simple-cleanup
+	      flymake-get-real-file-name)
+	    flymake-allowed-file-name-masks))
+
+(setq flymake-err-line-patterns
+      (cons '("^Lint at line \\([[:digit:]]+\\) character \\([[:digit:]]+\\): \\(.+\\)$"
+	      nil 1 2 3)
+	    flymake-err-line-patterns))
+
+;(add-hook 'javascript-mode-hook
+;	  (lambda () (flymake-mode 1)))
+
+
 
 ; Code standard
 (autoload 'python-pep8 "python-pep8")
