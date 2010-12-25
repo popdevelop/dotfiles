@@ -34,7 +34,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (if (system-type-is-gnu) (set-default-font "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-c-*-iso8859-1"))
-(if (system-type-is-darwin) (set-default-font "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1"))
+(if (system-type-is-darwin)
+    (if (> (x-display-pixel-width) 1280)
+        (set-default-font
+         "-apple-monaco-medium-r-normal--12-0-72-72-m-0-iso10646-1")
+      (set-default-font
+       "-apple-monaco-medium-r-normal--10-0-72-72-m-0-iso10646-1")))
 (if (system-type-is-win) (set-default-font "-bitstream-bitstream vera sans mono-medium-r-*--*-90-*--*--*-"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -359,11 +364,13 @@
 
 ;; CSS autocomplete inifinite loop hacks
 (add-to-list 'ac-css-value-classes
-	     '(border-width "thin" "medium" "thick" "inherit"))
+             '(border-width "thin" "medium" "thick" "inherit"))
 
 ;;; ---- Python
 
 ; Python indentation
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 (setq-default py-indent-offset 4)
 
 ; Static analysis
