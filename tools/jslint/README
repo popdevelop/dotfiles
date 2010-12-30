@@ -3,20 +3,13 @@
 
 Note. You need java installed on your system for this to work
 
-1. Download Rhino
-curl -O ftp://ftp.mozilla.org/pub/mozilla.org/js/rhino1_7R2.zip
-tar zxvf rhino1_7R2.zip
-cp rhino1_7R2/js.jar ~/Library/Java/Extensions/
-rm -rf rhino1_7R2
-rm rhino1_7R2.zip
+1. Install Rhino
+sudo port install rhino
 
-2. Test rhino
-java org.mozilla.javascript.tools.shell.Main
-
-3. JSLint
+2. JSLint
 sudo cp jslint jslint.js /usr/local/bin
 chmod a+x /usr/local/bin/jslint /usr/local/bin/jslint.js
 
-4. Run it!
+3. Run it!
 jslint myjavascript.js
 
