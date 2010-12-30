@@ -392,7 +392,7 @@
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-(load "flymake-php.el")
+;;(load "flymake-php.el")
 
 (defun flymake-jslint-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
