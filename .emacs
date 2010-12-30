@@ -85,6 +85,9 @@
 ;; Do not indent with tabs.
 (setq-default indent-tabs-mode nil)
 
+;; Reload buffer automatically if changed elsewhere
+(global-auto-revert-mode 1)
+
 ;;; ---- Mini buffer
 
 ;; Interactive completion in minibuffer
