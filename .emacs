@@ -397,7 +397,7 @@
          (local-file (file-relative-name
 		      temp-file
 		      (file-name-directory buffer-file-name))))
-    (list "rhino" (list (expand-file-name (add-path ".emacs.d/addons/jslint.js")) local-file))))
+    (list "rhino" (list (expand-file-name (add-path "tools/jslint/jslint.js")) local-file))))
 
 (setq flymake-allowed-file-name-masks
       (cons '(".+\\.js$"
@@ -411,8 +411,8 @@
 	      nil 1 2 3)
 	    flymake-err-line-patterns))
 
-;(add-hook 'javascript-mode-hook
-;	  (lambda () (flymake-mode 1)))
+(add-hook 'javascript-mode-hook
+	  (lambda () (flymake-mode 1)))
 
 
 
