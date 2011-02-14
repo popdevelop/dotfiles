@@ -49,6 +49,9 @@
 ;; Switch windows with s-a
 (global-set-key (kbd "s-a") 'other-window)
 
+;; Indent region
+(global-set-key (kbd "s-i") 'indent-region)
+
 ;; Color theme tweaks
 (set-face-background 'trailing-whitespace "Green")
 (set-face-background 'lineker-warning-face "Pink")
