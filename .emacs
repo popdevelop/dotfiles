@@ -322,6 +322,9 @@
 ;;;; Language add-ons
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; ---- Php
+(require 'php-mode)
+
 ;;; ---- Markdown
 
 (autoload 'markdown-mode "markdown-mode.el"
