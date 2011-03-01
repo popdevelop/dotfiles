@@ -470,6 +470,17 @@
 ;;; --- Ruby
 (require 'ruby-mode)
 
+;; (require 'csharp-mode)
+;; (setq auto-mode-alist
+;;       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+;; (defun my-csharp-mode-fn ()
+;;   (setq c-basic-offset 4)
+;;   )
+;; (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t)
+
+(require 'haml-mode)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; End Auto Completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -499,3 +510,5 @@
  '(lineker-warning-face ((((type x)) (:background "#202020" :foreground "#dddddd"))))
  '(trailing-whitespace ((((class color) (background dark)) (:strike-through "#222222" :underline "#383838"))))
  '(vertical-border ((nil (:foreground "#444444")))))
+
+(require 'anything-grep)
