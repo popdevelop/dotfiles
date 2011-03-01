@@ -532,5 +532,3 @@
  '(lineker-warning-face ((((type x)) (:background "#202020" :foreground "#dddddd"))))
  '(trailing-whitespace ((((class color) (background dark)) (:strike-through "#222222" :underline "#383838"))))
  '(vertical-border ((nil (:foreground "#444444")))))
-
-(require 'anything-grep)
