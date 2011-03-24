@@ -372,6 +372,13 @@
 (add-to-list 'ac-css-value-classes
              '(border-width "thin" "medium" "thick" "inherit"))
 
+(require 'sass-mode)
+(setq auto-mode-alist
+      (cons '("\\.scss$" . css-mode) auto-mode-alist))
+
+;;; ---- HTML/HAML
+(require 'haml-mode)
+
 ;;; ---- Python
 
 ; Python indentation
@@ -500,9 +507,6 @@
 ;;   )
 ;; (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t)
 
-(require 'haml-mode)
-
-(require 'sass-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; End Auto Completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
