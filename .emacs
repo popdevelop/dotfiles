@@ -62,6 +62,11 @@
 ;;;; Text input
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Make Emacs UTF-8 compatible for both display and editing:
+(prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
 ;;; ---- Misc
 
 ;; C-x 8 for entering non-ASCII Latin-1
