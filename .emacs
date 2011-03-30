@@ -290,6 +290,19 @@
 ;; Customize buffer name when identical to another
 (require 'uniquify)
 
+;;; ---- Mini map
+(require 'minimap)
+(defun minimap-toggle ()
+  "Show minimap if hidden, hide if present."
+  (interactive)
+  (if (and minimap-bufname
+	       (get-buffer minimap-bufname)
+	       (get-buffer-window (get-buffer minimap-bufname)))
+      (minimap-kill)
+    (minimap-create))
+  )
+(global-set-key (kbd "s-l") 'minimap-toggle)
+
 ;;; ---- iswitchb
 (iswitchb-mode 1)
 
