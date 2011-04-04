@@ -520,6 +520,13 @@
 		 (flymake-mode))
 	     ))
 
+(setq auto-mode-alist
+      (cons '("\\Gemfile$" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\Gemfile.lock$" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\Capfile$" . ruby-mode) auto-mode-alist))
+
 
 ;; (require 'csharp-mode)
 ;; (setq auto-mode-alist
