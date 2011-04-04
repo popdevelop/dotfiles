@@ -394,6 +394,10 @@
 (setq auto-mode-alist
       (cons '("\\.scss$" . css-mode) auto-mode-alist))
 
+;;; --- JST templates
+(setq auto-mode-alist
+      (cons '("\\.jst$" . html-mode) auto-mode-alist))
+
 ;;; ---- HTML/HAML
 (require 'haml-mode)
 
