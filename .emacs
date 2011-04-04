@@ -401,6 +401,11 @@
 ;;; ---- HTML/HAML
 (require 'haml-mode)
 
+;;; ---- XML / KML
+(setq auto-mode-alist
+      (cons '("\\kml$" . xml-mode) auto-mode-alist))
+
+
 ;;; ---- Python
 
 ; Python indentation
