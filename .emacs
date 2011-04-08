@@ -454,7 +454,8 @@
 (add-hook 'javascript-mode-hook
 	  (lambda () (flymake-mode 1)))
 
-
+; Use 2 spaces for indents in javascript-mode
+(setq js-indent-level 2)
 
 ; Code standard
 (autoload 'python-pep8 "python-pep8")
