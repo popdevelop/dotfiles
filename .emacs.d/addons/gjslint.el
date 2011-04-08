@@ -14,7 +14,7 @@
   "Initialize flymake for gjslint"
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
 		     'flymake-create-temp-inplace)))
-    (list "gjslint" (list temp-file "--nojsdoc"))))
+    (list "gjslint" (list "--nojsdoc" "--strict" temp-file))))
 
 (add-to-list 'flymake-allowed-file-name-masks
 	     '(".+\\.js$"
