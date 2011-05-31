@@ -464,6 +464,10 @@
 (autoload 'pep8 "python-pep8")
 (require 'python-pep8)
 (require 'tramp)
+(setq tramp-default-method "ssh")
+(defvar find-file-root-prefix
+  (if (featurep 'xemacs) "/[sudo/root@localhost]" "/sudo:root@localhost:")
+  "*The filename prefix used to open a file with `find-file-root'.")
 
 ; Pymacs can run Python code from Emacs
 ; Download: http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz
@@ -534,6 +538,13 @@
       (cons '("\\Gemfile.lock$" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist
       (cons '("\\Capfile$" . ruby-mode) auto-mode-alist))
+
+(defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer 
+          (delq (current-buffer) 
+                (remove-if-not 'buffer-file-name (buffer-list)))))
 
 
 ;; (require 'csharp-mode)
