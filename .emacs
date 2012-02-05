@@ -102,30 +102,39 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; ---- Move lines with M-p (up) and M-n (down)
-(global-set-key "\M-p" 'move-line-up)
-(global-set-key "\M-n" 'move-line-down)
+(global-set-key "\M-p" 'move-text-up)
+(global-set-key "\M-n" 'move-text-down)
 
-(defun move-line (&optional n)
-   "Move current line N (1) lines up/down leaving point in place."
-   (interactive "p")
-   (when (null n)
-     (setq n 1))
-   (let ((col (current-column)))
+(defun move-text-internal (arg)
+   (cond
+    ((and mark-active transient-mark-mode)
+     (if (> (point) (mark))
+        (exchange-point-and-mark))
+     (let ((column (current-column))
+          (text (delete-and-extract-region (point) (mark))))
+       (forward-line arg)
+       (move-to-column column t)
+       (set-mark (point))
+       (insert text)
+       (exchange-point-and-mark)
+       (setq deactivate-mark nil)))
+    (t
      (beginning-of-line)
-     (next-line 1)
-     (transpose-lines n)
-     (previous-line 1)
-     (forward-char col)))
-
-(defun move-line-up (n)
-   "Moves current line N (1) lines up leaving point in place."
-   (interactive "p")
-   (move-line (if (null n) -1 (- n))))
-
-(defun move-line-down (n)
-   "Moves current line N (1) lines down leaving point in place."
-   (interactive "p")
-   (move-line (if (null n) 1 n)))
+     (when (or (> arg 0) (not (bobp)))
+       (forward-line)
+       (when (or (< arg 0) (not (eobp)))
+        (transpose-lines arg))
+       (forward-line -1)))))
+(defun move-text-down (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines down."
+   (interactive "*p")
+   (move-text-internal arg))
+(defun move-text-up (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines up."
+   (interactive "*p")
+   (move-text-internal (- arg)))
 
 ;;; ---- dabbrev
 ;; Advanced abbreviation completion M-/ or M-C-/
@@ -542,14 +551,14 @@
 (defun kill-other-buffers ()
     "Kill all other buffers."
     (interactive)
-    (mapc 'kill-buffer 
-          (delq (current-buffer) 
+    (mapc 'kill-buffer
+          (delq (current-buffer)
                 (remove-if-not 'buffer-file-name (buffer-list)))))
 
 
-;; (require 'csharp-mode)
-;; (setq auto-mode-alist
-;;       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+(require 'csharp-mode)
+(setq auto-mode-alist
+      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 ;; (defun my-csharp-mode-fn ()
 ;;   (setq c-basic-offset 4)
 ;;   )
