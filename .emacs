@@ -63,14 +63,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Make Emacs UTF-8 compatible for both display and editing:
-(prefer-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;;; ---- Misc
-
-;; C-x 8 for entering non-ASCII Latin-1
-(require 'iso-transl)
 
 ;; Avoid jumpy scolling
 (setq scroll-step 1)
@@ -473,40 +472,40 @@
 ; Download: http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz
 ; Or check packages directory in our dotfiles. .el-file is for version 0.24
 ; sudo python setup.py install
-(require 'pymacs)
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
+;(require 'pymacs)
+;(autoload 'pymacs-apply "pymacs")
+;(autoload 'pymacs-call "pymacs")
+;(autoload 'pymacs-eval "pymacs" nil t)
+;(autoload 'pymacs-exec "pymacs" nil t)
+;(autoload 'pymacs-load "pymacs" nil t)
+;
+;(pymacs-load "ropemacs" "rope-")
+;(setq ropemacs-enable-autoimport t)
+;(add-hook 'python-mode-hook
+;          '(lambda () (ropemacs-mode 1)) t)
 
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
-(add-hook 'python-mode-hook
-          '(lambda () (ropemacs-mode 1)) t)
-
-(defun prefix-list-elements (list prefix)
-  (let (value)
-    (nreverse
-     (dolist (element list value)
-       (setq value (cons (format "%s%s" prefix element) value))))))
-
-(defun ac-ropemacs-candidate ()
-  (prefix-list-elements (rope-completions) ac-prefix))
-
-(ac-define-source popdevelop
-  '((candidates . (ac-ropemacs-candidate))
-    (prefix . ac-prefix-c-dot)
-    (requires . 1)
-    (symbol . "f")
-    (action . ac-start)
-    (limit . nil)))
-
-(add-hook 'python-mode-hook
-          (lambda ()
-            (auto-complete-mode 1)
-            (set (make-local-variable 'ac-sources)
-                 (append ac-sources '(ac-source-popdevelop)))))
+;(defun prefix-list-elements (list prefix)
+;  (let (value)
+;    (nreverse
+;     (dolist (element list value)
+;       (setq value (cons (format "%s%s" prefix element) value))))))
+;
+;(defun ac-ropemacs-candidate ()
+;  (prefix-list-elements (rope-completions) ac-prefix))
+;
+;(ac-define-source popdevelop
+;  '((candidates . (ac-ropemacs-candidate))
+;    (prefix . ac-prefix-c-dot)
+;    (requires . 1)
+;    (symbol . "f")
+;    (action . ac-start)
+;    (limit . nil)))
+;
+;(add-hook 'python-mode-hook
+;          (lambda ()
+;            (auto-complete-mode 1)
+;            (set (make-local-variable 'ac-sources)
+;                 (append ac-sources '(ac-source-popdevelop)))))
 
 ;;; --- Ruby
 (require 'ruby-mode)
@@ -517,7 +516,7 @@
 	 (local-file  (file-relative-name
                        temp-file
                        (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
+    (list "/Users/johangyllenspetz/.rvm/bin/ruby-1.9.3-p194" (list "-c" local-file))))
 
 (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
 (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
